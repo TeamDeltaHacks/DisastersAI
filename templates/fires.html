@@ -128,9 +128,9 @@
 		  </style>
 
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Earthquake Magnitude</h2>
-            <p class="mb-0">Using LR for earthquake magnitude prediction</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Putout Time</h2>
+            <p class="mb-0">Using SVMs to determine wildfire putout time</p>
+            <form action="/fires" method="post" role="form" class="php-email-form">
 
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -140,6 +140,18 @@
                 <div class="col-md-6 form-group">
                   <label for="name">Latitude</label>
                   <input type="number" class="form-control" name="latitude">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name">Discovery Month (1-12)</label>
+                  <input type="number" class="form-control" name="month">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name">Vegetation Levels (1-28)</label>
+                  <input type="number" class="form-control" name="vegetation">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name">Temperature 7 Days Before (Celsius)</label>
+                  <input type="number" class="form-control" name="temperature">
                 </div>
                 <input type="hidden" class="form-control" name="type" value="0">
 
@@ -158,34 +170,14 @@
           </div>
           
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Tsunami Aftermath</h2>
-            <p class="mb-0">Using RF to determine tsunami aftermath</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Smoke</h2>
+            <p class="mb-0">Using CNNs to detect wildfire smoke</p>
+            <form action="/fires" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Month</label>
-                  <input type="number" class="form-control" name="month">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Day</label>
-                  <input type="number" class="form-control" name="day">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Deaths</label>
-                  <input type="number" class="form-control" name="deaths">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Message</label>
-                  <textarea class="form-control" name="message" cols="30" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
+                  <label for="name">Image</label>
+                  <input type="file" class="form-control" name="image">
                 </div>
                 <input type="hidden" class="form-control" name="type" value="1">
 
