@@ -140,6 +140,19 @@ section {
   position: relative;
   margin-bottom: 30px;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out,
+  			  box-shadow 0.2s ease-in-out;
+}
+
+.feature-1:hover .wrap-icon:hover {
+	transform: scale(1.04);
+}
+
+.feature-1:active .wrap-icon:active {
+	transform: scale(0.98);
+	box-shadow: none;
 }
 
 .feature-1 .wrap-icon.icon-1 {
