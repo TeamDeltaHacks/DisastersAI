@@ -9,6 +9,9 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+tsunami_model = load('tsunami_model.joblib')
+magnitude_model = load('magnitude_model.joblib')
+
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -57,9 +60,27 @@ def hurricanes():
 @app.route('/earthquakes', methods=['GET', 'POST'])
 def earthquakes():
 	if request.method == 'POST':
+		print(request.form)
 		if(request.form["type"] == "0"):
-			return render_template('earthquakes.html', output="Coming soon!")
+			output = ""
+			try:
+				longitude = int(request.form["longitude"])
+				latitude = int(request.form["latitude"])
+				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
+			except:
+				output = "Invalid inputs!"
+			return render_template('earthquakes.html', output=output)
 		else:
-			return render_template('earthquakes.html', output="Coming soon!")
+		output = ""
+			try:
+				longitude = int(request.form["longitude"])
+				latitude = int(request.form["latitude"])
+				month = int(request.form["month"])
+				day = int(request.form["day"])
+				deaths = int(request.form["deaths"])
+				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
+			except:
+				output = "Invalid inputs!"
+			return render_template('earthquakes.html', output=output)
 	else:
 		return render_template('earthquakes.html', output="")
