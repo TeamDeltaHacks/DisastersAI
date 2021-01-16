@@ -6,9 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Earthquakes | DisastersAI</title>
-  <link rel="icon" href="./static/assets/img/disasterAI-icon.png" type="image/icon type">
+  <link rel="icon" href="./static/assets/img/disasterAI-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="./static/assets/img/disasterAI-icon.png" type="image/png">
   <meta content="" name="description">
   <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="./static/assets/img/favicon.png" rel="icon">
+  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -113,7 +118,9 @@
 
     <section class="section">
 	  {% if output != "" %}
-	    <h1 class="output">{{output}}</h1>
+	    <center>
+	      <h1 class="output">{{output}}</h1>
+	    </center>
 	  {% endif %}
       <div class="container">
 		<div class="row">
@@ -134,12 +141,12 @@
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude" required>
+                  <label for="name">Longitude (-90, 90)</label>
+                  <input type="number" class="form-control" name="longitude" min="-90" max="90" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude" required>
+                  <label for="name">Latitude (-180, 180)</label>
+                  <input type="number" class="form-control" name="latitude" min="-180" max="180" required>
                 </div>
                 <input type="hidden" class="form-control" name="type" value="0" required>
 
@@ -164,20 +171,20 @@
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude" required>
+                  <label for="name">Longitude (-90, 90)</label>
+                  <input type="number" class="form-control" name="longitude" min="-90" max="90" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude" required>
+                  <label for="name">Latitude (-180, 180)</label>
+                  <input type="number" class="form-control" name="latitude" min="-180" max="180" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Month (1-12)</label>
-                  <input type="number" class="form-control" name="month" required>
+                  <input type="number" class="form-control" name="month" min="1" max="12" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Day (1-31)</label>
-                  <input type="number" class="form-control" name="day" required>
+                  <input type="number" class="form-control" name="day" min="1" max="31" required>
                 </div>
                 <div class="col-md-12 form-group">
                   <label for="name">Deaths</label>
