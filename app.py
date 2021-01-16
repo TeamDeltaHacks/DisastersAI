@@ -78,7 +78,7 @@ def earthquakes():
 				# make numpy arroy
 				mag_data = {'longitude': [longitude], 'latitude': [longitude]}
 				mag_dataf = pd.DataFrame(data=mag_data)
-				result = round(str(magnitude_model.predict(mag_dataf)[0]), 2)
+				result = str(round(magnitude_model.predict(mag_dataf)[0], 2))
 				output = "Output: " + result + " on the Richter scale"
 				
 			except Exception as e:
