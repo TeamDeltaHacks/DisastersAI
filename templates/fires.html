@@ -24,7 +24,7 @@
   <link href="./static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="./static/assets/css/style.css?v=2" rel="stylesheet">
+  <link href="./static/assets/css/style.css?v=5" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: SoftLand - v2.2.0
@@ -115,6 +115,9 @@
     </section>
 
     <section class="section">
+	  {% if output != "" %}
+	    <h1 class="output">{{output}}</h1>
+	  {% endif %}
       <div class="container">
 		<div class="row">
 		  <style>
