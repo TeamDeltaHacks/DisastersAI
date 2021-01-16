@@ -66,7 +66,13 @@ def earthquakes():
 			try:
 				longitude = int(request.form["longitude"])
 				latitude = int(request.form["latitude"])
-				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
+				
+				magnitude_model = load('magnitude_model.joblib')
+
+				# make numpy arroy
+
+				# output = magnitude_model.predict(numyparray)
+
 			except:
 				output = "Invalid inputs!"
 			return render_template('earthquakes.html', output=output)
@@ -79,6 +85,13 @@ def earthquakes():
 				day = int(request.form["day"])
 				deaths = int(request.form["deaths"])
 				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
+
+				# make numpy array 
+
+				tsunami_model = load('tsunami_model.joblib')
+
+				# output = tsunami_model.predict(numpyarray)
+			
 			except:
 				output = "Invalid inputs!"
 			return render_template('earthquakes.html', output=output)
