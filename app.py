@@ -21,14 +21,11 @@ def fires():
 		print(request.form)
 		if(request.form["type"] == "1"):
 			if 'image' not in request.files:
-				print("1")
 				return render_template('fires.html')
 			f = request.files["image"]
 			if f.filename == '':
-				print("2")
 				return render_template('fires.html')
 			if f and allowed_file(f.filename):
-				print("3")
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		return render_template('fires.html')
@@ -39,6 +36,16 @@ def fires():
 def hurricanes():
 	if request.method == 'POST':
 		print(request.form)
+		print(request.form["type"] == "0")
+		if(request.form["type"] == "0"):
+			if 'image' not in request.files:
+				return render_template('hurricanes.html')
+			f = request.files["image"]
+			if f.filename == '':
+				return render_template('hurricanes.html')
+			if f and allowed_file(f.filename):
+				filename = secure_filename(f.filename)
+				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		return render_template('hurricanes.html')
 	else:
 		return render_template('hurricanes.html')
