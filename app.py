@@ -30,7 +30,9 @@ def index():
 @app.route('/fires', methods=['GET', 'POST'])
 def fires():
 	if request.method == 'POST':
-		if(request.form["type"] == "1"):
+		if(request.form["type"] == "0"):
+			return render_template('fires.html', output="Coming soon!")
+		else:
 			if 'image' not in request.files:
 				return render_template('fires.html', output="File not found! Please try re-uploading.")
 			f = request.files["image"]
@@ -40,9 +42,7 @@ def fires():
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 				return render_template('fires.html', output="Output: 0")
-			return render_template('fires.html', output="An unknown error occurred!")
-		else:
-			return render_template('fires.html', output="Coming soon!")
+			return render_template('fires.html', output="An unknown error occurred!")			
 	else:
 		return render_template('fires.html', output="")
 
