@@ -103,7 +103,7 @@
               <div class="col-md-7 text-center hero-text">
                 <h1 data-aos="fade-up" data-aos-delay="">Hurricanes</h1>
                 <p class="mb-5" data-aos="fade-up" data-aos-delay="100">
-	                Using CNNs to predict hurricane damange<br>
+	                Using CNNs to predict hurricane damage<br>
 		            Using LR to determine hurricane max wind
                 </p>
               </div>
@@ -128,18 +128,14 @@
 		  </style>
 
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Earthquake Magnitude</h2>
-            <p class="mb-0">Using LR for earthquake magnitude prediction</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Hurricane Damage</h2>
+            <p class="mb-0">Using CNNs to predict hurricane damage</p>
+            <form action="/hurricanes" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
+                  <label for="name">Image</label>
+                  <input type="file" class="" name="image">
                 </div>
                 <input type="hidden" class="form-control" name="type" value="0">
 
@@ -158,34 +154,18 @@
           </div>
           
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Tsunami Aftermath</h2>
-            <p class="mb-0">Using RF to determine tsunami aftermath</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Max Wind</h2>
+            <p class="mb-0">Using LR to determine hurricane max wind</p>
+            <form action="/hurricanes" method="post" role="form" class="php-email-form">
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
+                  <label for="name">Input 1</label>
+                  <input type="number" class="form-control" name="input1">
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Month</label>
-                  <input type="number" class="form-control" name="month">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Day</label>
-                  <input type="number" class="form-control" name="day">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Deaths</label>
-                  <input type="number" class="form-control" name="deaths">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Message</label>
-                  <textarea class="form-control" name="message" cols="30" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
+                  <label for="name">Input 2</label>
+                  <input type="number" class="form-control" name="input2">
                 </div>
                 <input type="hidden" class="form-control" name="type" value="1">
 
