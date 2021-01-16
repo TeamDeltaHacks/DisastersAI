@@ -72,10 +72,14 @@ def earthquakes():
 		if(request.form["type"] == "0"):
 			output = ""
 			try:
-				longitude = int(request.form["longitude"])
-				latitude = int(request.form["latitude"])
-
-				# make numpy arroy
+				longitude = float(request.form["longitude"])
+				latitude = float(request.form["latitude"])
+				
+				assert (longitude >= -90)
+				assert (longitude <= 90)
+				assert (latitude >= -180)
+				assert (latitude <= 180)
+				
 				mag_data = {'longitude': [longitude], 'latitude': [longitude]}
 				mag_dataf = pd.DataFrame(data=mag_data)
 				result = str(round(magnitude_model.predict(mag_dataf)[0], 2))
@@ -88,18 +92,25 @@ def earthquakes():
 		else:
 			output = ""
 			try:
-				longitude = int(request.form["longitude"])
-				latitude = int(request.form["latitude"])
+				longitude = float(request.form["longitude"])
+				latitude = float(request.form["latitude"])
+				
+				assert (longitude >= -90)
+				assert (longitude <= 90)
+				assert (latitude >= -180)
+				assert (latitude <= 180)
+				
 				month = int(request.form["month"])
 				day = int(request.form["day"])
 				deaths = int(request.form["deaths"])
-				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
-
-				# make numpy array 
-
-				# output = tsunami_model.predict(numpyarray)
+				
+				tsunami_data = {'LONGITUDE': [longitude], 'LATITUDE': [longitude], 'MONTH': [month], 'DAY': [day], 'DEATHS': [deaths]}
+				tsunami_dataf = pd.DataFrame(data=tsunami_data)
+				result = str(tsunami_model.predict(tsunami_dataf)[0] * 100)
+				output = "Output: " + result + "% chance of a tsunami"
 			
-			except:
+			except Exception as e:
+				print(e)
 				output = "Invalid inputs!"
 			return render_template('earthquakes.html', output=output)
 	else:
