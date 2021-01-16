@@ -10,9 +10,9 @@ def index():
 def features():
     return render_template('fires.html')
 
-@app.route('/floods')
+@app.route('/hurricanes')
 def pricing():
-    return render_template('floods.html')
+    return render_template('hurricanes.html')
 
 @app.route('/earthquakes')
 def blog():
