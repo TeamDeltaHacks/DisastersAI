@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import os
+from joblib import dump, load
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -18,42 +19,47 @@ def index():
 @app.route('/fires', methods=['GET', 'POST'])
 def fires():
 	if request.method == 'POST':
-		print(request.form)
 		if(request.form["type"] == "1"):
 			if 'image' not in request.files:
-				return render_template('fires.html')
+				return render_template('fires.html', output="File not found! Please try re-uploading.")
 			f = request.files["image"]
 			if f.filename == '':
-				return render_template('fires.html')
+				return render_template('fires.html', output="File not found! Please try re-uploading.")
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		return render_template('fires.html')
+				return render_template('fires.html', output="Output: 0")
+			return render_template('fires.html', output="An unknown error occurred!")
+		else:
+			return render_template('fires.html', output="Coming soon!")
 	else:
-		return render_template('fires.html')
+		return render_template('fires.html', output="")
 
 @app.route('/hurricanes', methods=['GET', 'POST'])
 def hurricanes():
 	if request.method == 'POST':
-		print(request.form)
-		print(request.form["type"] == "0")
 		if(request.form["type"] == "0"):
 			if 'image' not in request.files:
-				return render_template('hurricanes.html')
+				return render_template('hurricanes.html', output="File not found! Please try re-uploading.")
 			f = request.files["image"]
 			if f.filename == '':
-				return render_template('hurricanes.html')
+				return render_template('hurricanes.html', output="File not found! Please try re-uploading.")
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		return render_template('hurricanes.html')
+				return render_template('hurricanes.html', output="Output: 0")
+			return render_template('hurricanes.html', output="An unknown error occurred!")
+		else:
+			return render_template('hurricanes.html', output="Coming soon!")
 	else:
-		return render_template('hurricanes.html')
+		return render_template('hurricanes.html', output="")
 
 @app.route('/earthquakes', methods=['GET', 'POST'])
 def earthquakes():
 	if request.method == 'POST':
-		print(request.form)
-		return render_template('earthquakes.html')
+		if(request.form["type"] == "0"):
+			return render_template('earthquakes.html', output="Coming soon!")
+		else:
+			return render_template('earthquakes.html', output="Coming soon!")
 	else:
-		return render_template('earthquakes.html')
+		return render_template('earthquakes.html', output="")
