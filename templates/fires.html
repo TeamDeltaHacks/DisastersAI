@@ -138,25 +138,25 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
+                  <input type="number" class="form-control" name="longitude" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
+                  <input type="number" class="form-control" name="latitude" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Discovery Month (1-12)</label>
-                  <input type="number" class="form-control" name="month">
+                  <input type="number" class="form-control" name="month" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Vegetation Levels (1-28, Below)</label>
-                  <input type="number" class="form-control" name="vegetation">
+                  <input type="number" class="form-control" name="vegetation" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Temperature 7 Days Before (Celsius)</label>
-                  <input type="number" class="form-control" name="temperature">
+                  <input type="number" class="form-control" name="temperature" required>
                 </div>
-                <input type="hidden" class="form-control" name="type" value="0">
+                <input type="hidden" class="form-control" name="type" value="0" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>
@@ -213,9 +213,9 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Image</label>
-                  <input type="file" class="" name="image">
+                  <input type="file" class="" name="image" required>
                 </div>
-                <input type="hidden" class="form-control" name="type" value="1">
+                <input type="hidden" class="form-control" name="type" value="1" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>
