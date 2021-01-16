@@ -6,24 +6,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/features')
+@app.route('/fires')
 def features():
-    return render_template('features.html')
+    return render_template('fires.html')
 
-@app.route('/pricing')
+@app.route('/floods')
 def pricing():
-    return render_template('pricing.html')
+    return render_template('floods.html')
 
-@app.route('/blog')
+@app.route('/earthquakes')
 def blog():
-    return render_template('blog.html')
-
-@app.route('/blogSingle')
-def blogSingle():
-    return render_template('blog-single.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-    
+    return render_template('earthquakes.html')
