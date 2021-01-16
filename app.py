@@ -1,6 +1,15 @@
 from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
+import os
+
+UPLOAD_FOLDER = './uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def index():
@@ -10,6 +19,18 @@ def index():
 def fires():
 	if request.method == 'POST':
 		print(request.form)
+		if(request.form["type"] == "1"):
+			if 'image' not in request.files:
+				print("1")
+				return render_template('fires.html')
+			f = request.files["image"]
+			if f.filename == '':
+				print("2")
+				return render_template('fires.html')
+			if f and allowed_file(f.filename):
+				print("3")
+				filename = secure_filename(f.filename)
+				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		return render_template('fires.html')
 	else:
 		return render_template('fires.html')
