@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
 putout_model = load('putout_model.joblib')
-hurricane_model = load_model('hurricane-weights.h5')
+hurricane_nodel = load_model('hurricane-weights.h5')
 wildfire_model = load_model('wildfire-weights.h5')
 
 
@@ -78,7 +78,8 @@ def earthquakes():
 				# make numpy arroy
 				mag_data = {'longitude': [longitude], 'latitude': [longitude]}
 				mag_dataf = pd.DataFrame(data=mag_data)
-				output = "Output: " + magnitude_model.predict(mag_dataf)[0] + " on the Richter scale"
+				result = round(str(magnitude_model.predict(mag_dataf)[0]), 2)
+				output = "Output: " + result + " on the Richter scale"
 				
 			except Exception as e:
 				print(e)
