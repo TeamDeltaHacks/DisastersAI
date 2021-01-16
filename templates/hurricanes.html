@@ -6,13 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Hurricanes | DisastersAI</title>
-  <link rel="icon" href="./static/assets/img/disasterAI-icon.png" type="image/icon type">
+  <link rel="icon" href="./static/assets/img/disasterAI-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="./static/assets/img/disasterAI-icon.png" type="image/png">
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons
+  <!-- Favicons -->
   <link href="./static/assets/img/favicon.png" rel="icon">
-  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="./static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -117,7 +118,9 @@
 
     <section class="section">
 	  {% if output != "" %}
-	    <h1 class="output">{{output}}</h1>
+	    <center>
+	      <h1 class="output">{{output}}</h1>
+	    </center>
 	  {% endif %}
       <div class="container">
 		<div class="row">
