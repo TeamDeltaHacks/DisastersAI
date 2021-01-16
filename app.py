@@ -11,6 +11,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
+putout_model = load('putout_model.joblib')
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -66,8 +67,6 @@ def earthquakes():
 			try:
 				longitude = int(request.form["longitude"])
 				latitude = int(request.form["latitude"])
-				
-				magnitude_model = load('magnitude_model.joblib')
 
 				# make numpy arroy
 
@@ -87,8 +86,6 @@ def earthquakes():
 				# INSERT MODEL HERE, SET OUTPUT TO OUTPUT VARIABLE
 
 				# make numpy array 
-
-				tsunami_model = load('tsunami_model.joblib')
 
 				# output = tsunami_model.predict(numpyarray)
 			
