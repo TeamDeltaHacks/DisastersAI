@@ -21,6 +21,13 @@
     }, 1500, 'easeInOutExpo');
     return false;
   });
+  $('.get-started').click(function() {
+    $('html, body').animate({
+      scrollTop: $("#start").offset().top
+    }, 1500, 'easeInOutExpo');
+    return false;
+  });
+
 
   var siteMenuClone = function() {
     $('.js-clone-nav').each(function() {
