@@ -17,7 +17,7 @@ tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
 putout_model = load('putout_model.joblib')
 hurricane_nodel = load_model('hurricane-weights.h5')
-wildfire_model = load_model('wildifre-weights.h5')
+wildfire_model = load_model('wildfire-weights.h5')
 
 
 def allowed_file(filename):
@@ -76,11 +76,12 @@ def earthquakes():
 				latitude = int(request.form["latitude"])
 
 				# make numpy arroy
-				mag_data = {'longitude': longitude, 'latitude' : longitude}
+				mag_data = {'longitude': [longitude], 'latitude': [longitude]}
 				mag_dataf = pd.DataFrame(data=mag_data)
-				output = magnitude_model.predict(mag_dataf)
-
-			except:
+				output = "Output: " magnitude_model.predict(mag_dataf)[0] + " on the Richter scale"
+				
+			except Exception as e:
+				print(e)
 				output = "Invalid inputs!"
 			return render_template('earthquakes.html', output=output)
 		else:
