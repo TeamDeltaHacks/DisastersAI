@@ -2,6 +2,10 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import os
 from joblib import dump, load
+import tensorflow as tf
+import keras
+from keras.models import load_model
+import pandas as pd
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -12,6 +16,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
 putout_model = load('putout_model.joblib')
+hurricane_nodel = load_model('hurricane-weights.h5')
+wildfire_model = load_model('wildifre-weights.h5')
+
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -69,14 +76,15 @@ def earthquakes():
 				latitude = int(request.form["latitude"])
 
 				# make numpy arroy
-
-				# output = magnitude_model.predict(numyparray)
+				mag_data = {'longitude': longitude, 'latitude' : longitude}
+				mag_dataf = pd.DataFrame(data=mag_data)
+				output = magnitude_model.predict(mag_dataf)
 
 			except:
 				output = "Invalid inputs!"
 			return render_template('earthquakes.html', output=output)
 		else:
-		output = ""
+			output = ""
 			try:
 				longitude = int(request.form["longitude"])
 				latitude = int(request.form["latitude"])
