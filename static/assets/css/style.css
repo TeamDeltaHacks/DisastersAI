@@ -5,8 +5,6 @@
 * License: https://bootstrapmade.com/license/
 */
 
-
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1238,4 +1236,9 @@ section {
 .output {
 	text-align: center;
 	margin-bottom: 60px;
+	background-color: var(--cyan);
+	width: max-content;
+	padding: 30px;
+	border-radius: 20px;
+	color: white;
 }
