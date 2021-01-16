@@ -25,7 +25,7 @@
   <link href="./static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="./static/assets/css/style.css?v=2" rel="stylesheet">
+  <link href="./static/assets/css/style.css?v=5" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: SoftLand - v2.2.0
@@ -104,7 +104,7 @@
               <div class="col-md-7 text-center hero-text">
                 <h1 data-aos="fade-up" data-aos-delay="">Hurricanes</h1>
                 <p class="mb-5" data-aos="fade-up" data-aos-delay="100">
-	                Using CNNs to predict hurricane damange<br>
+	                Using CNNs to predict hurricane damage<br>
 		            Using LR to determine hurricane max wind
                 </p>
               </div>
@@ -116,6 +116,9 @@
     </section>
 
     <section class="section">
+	  {% if output != "" %}
+	    <h1 class="output">{{output}}</h1>
+	  {% endif %}
       <div class="container">
 		<div class="row">
 		  <style>
@@ -129,20 +132,16 @@
 		  </style>
 
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Earthquake Magnitude</h2>
-            <p class="mb-0">Using LR for earthquake magnitude prediction</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Hurricane Damage</h2>
+            <p class="mb-0">Using CNNs to predict hurricane damage</p>
+            <form action="/hurricanes" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
+                  <label for="name">Image</label>
+                  <input type="file" class="" name="image" required>
                 </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
-                </div>
-                <input type="hidden" class="form-control" name="type" value="0">
+                <input type="hidden" class="form-control" name="type" value="0" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>
@@ -159,36 +158,20 @@
           </div>
           
           <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
-	        <h2>Tsunami Aftermath</h2>
-            <p class="mb-0">Using RF to determine tsunami aftermath</p>
-            <form action="/earthquakes" method="post" role="form" class="php-email-form">
+	        <h2>Max Wind</h2>
+            <p class="mb-0">Using LR to determine hurricane max wind</p>
+            <form action="/hurricanes" method="post" role="form" class="php-email-form">
 
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
+                  <label for="name">Input 1</label>
+                  <input type="number" class="form-control" name="input1" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
+                  <label for="name">Input 2</label>
+                  <input type="number" class="form-control" name="input2" required>
                 </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Month</label>
-                  <input type="number" class="form-control" name="month">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Day</label>
-                  <input type="number" class="form-control" name="day">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Deaths</label>
-                  <input type="number" class="form-control" name="deaths">
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Message</label>
-                  <textarea class="form-control" name="message" cols="30" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                </div>
-                <input type="hidden" class="form-control" name="type" value="1">
+                <input type="hidden" class="form-control" name="type" value="1" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>

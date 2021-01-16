@@ -5,6 +5,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1231,4 +1233,9 @@ section {
 .social a:hover {
   color: #fff;
   background: #2d71a1;
+}
+
+.output {
+	text-align: center;
+	margin-bottom: 60px;
 }

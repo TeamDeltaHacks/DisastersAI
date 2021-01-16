@@ -21,7 +21,7 @@
   <link href="./static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="./static/assets/css/style.css?v=2" rel="stylesheet">
+  <link href="./static/assets/css/style.css?v=5" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: SoftLand - v2.2.0
@@ -112,6 +112,9 @@
     </section>
 
     <section class="section">
+	  {% if output != "" %}
+	    <h1 class="output">{{output}}</h1>
+	  {% endif %}
       <div class="container">
 		<div class="row">
 		  <style>
@@ -132,25 +135,25 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude">
+                  <input type="number" class="form-control" name="longitude" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude">
+                  <input type="number" class="form-control" name="latitude" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Discovery Month (1-12)</label>
-                  <input type="number" class="form-control" name="month">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="name">Vegetation Levels (1-28)</label>
-                  <input type="number" class="form-control" name="vegetation">
+                  <input type="number" class="form-control" name="month" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Temperature 7 Days Before (Celsius)</label>
-                  <input type="number" class="form-control" name="temperature">
+                  <input type="number" class="form-control" name="temperature" required>
                 </div>
-                <input type="hidden" class="form-control" name="type" value="0">
+                <div class="col-md-12 form-group">
+                  <label for="name">Vegetation Levels (1-28, Below)</label>
+                  <input type="number" class="form-control" name="vegetation" required>
+                </div>
+                <input type="hidden" class="form-control" name="type" value="0" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>
@@ -162,6 +165,39 @@
                   <input type="submit" class="btn btn-primary d-block w-100" value="Predict">
                 </div>
               </div>
+              <br>
+              <p>Vegetation Levels (Dominant Vegetation in the Areas):
+	              <ol>
+		              <li>Tropical Evergreen Broadleaf Forest</li>
+		              <li>Tropical Deciduous Broadleaf Forest</li>
+		              <li>Temperate Evergreen Broadleaf Forest</li>
+		              <li>Temperate Evergreen Needleleaf Forest</li>
+		              <li>Temperate Deciduous Broadleaf Forest</li>
+		              <li>Boreal Evergreen Needleleaf Forest</li>
+		              <li>Boreal Deciduous Needleleaf Forest</li>
+		              <li>Savanna</li>
+		              <li>C3 Grassland/Steppe</li>
+		              <li>C4 Grassland/Steppe</li>
+		              <li>Dense Shrubland</li>
+		              <li>Open Shrubland</li>
+		              <li>Tundra Tundra</li>
+		              <li>Desert</li>
+		              <li>Polar Desert/Rock/Ice</li>
+		              <li>Secondary Tropical Evergreen Broadleaf Forest</li>
+		              <li>Secondary Tropical Deciduous Broadleaf Forest</li>
+		              <li>Secondary Temperate Evergreen Broadleaf Forest</li>
+		              <li>Secondary Temperate Evergreen Needleleaf Forest</li>
+		              <li>Secondary Temperate Deciduous Broadleaf Forest</li>
+		              <li>Secondary Boreal Evergreen Needleleaf Forest</li>
+		              <li>Secondary Boreal Deciduous Needleleaf Forest</li>
+		              <li>Water/Rivers Water</li>
+		              <li>C3 Cropland</li>
+		              <li>C4 Cropland</li>
+		              <li>C3 Pastureland</li>
+		              <li>C4 Pastureland</li>
+		              <li>Urban land</li>
+		          </ol>
+              </p>
 
             </form>
           </div>
@@ -174,9 +210,9 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Image</label>
-                  <input type="file" class="form-control" name="image">
+                  <input type="file" class="" name="image" required>
                 </div>
-                <input type="hidden" class="form-control" name="type" value="1">
+                <input type="hidden" class="form-control" name="type" value="1" required>
 
                 <div class="col-md-12 mb-3">
                   <div class="loading">Loading</div>
