@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
 putout_model = load('putout_model.joblib')
-hurricane_nodel = load_model('hurricane-weights.h5')
+hurricane_model = load_model('hurricane-weights.h5')
 wildfire_model = load_model('wildfire-weights.h5')
 
 
