@@ -1,3 +1,3 @@
 # DisastersAI
 
-Using AI to help fight against natural disasters
+Revolutionizing Catastrophe Prediction with Machine Learning
