@@ -1242,3 +1242,11 @@ section {
 	border-radius: 20px;
 	color: white;
 }
+
+.btn-primary {
+	transition: box-shadow 0.2s ease-in-out;
+}
+.btn-primary:active {
+	box-shadow: none !important;
+	border: none !important;
+}
