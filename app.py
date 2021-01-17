@@ -31,7 +31,43 @@ def index():
 def fires():
 	if request.method == 'POST':
 		if(request.form["type"] == "0"):
-			return render_template('fires.html', output="Coming soon!")
+			output = ""
+			try:
+				longitude = float(request.form["longitude"])
+				latitude = float(request.form["latitude"])
+				month = int(request.form["month"])
+				temperature = float(request.form["temperature"])
+				humidity = float(request.form["humidity"])
+				precipitation = float(request.form["precipitation"])
+				wind = float(request.form["wind"])
+				vegetation = int(request.form["vegetation"])
+				
+				assert (longitude >= -90)
+				assert (longitude <= 90)
+				assert (latitude >= -180)
+				assert (latitude <= 180)
+				assert (month >= 1)
+				assert (month <= 12)
+				assert (humidity >= 0)
+				assert (humidity <= 100)
+				assert (precipitation >= 0)
+				assert (wind >= 0)
+				assert (vegetation >= 1)
+				assert (vegetation <= 12)
+				
+				putout_data = {'longitude': [longitude], 'latitude': [longitude], 'discovery_month': [month], 'Vegetation': [vegetation], 'Temp_pre_7': [temperature], 'Hum_pre_7': [humidity], 'Prec_pre_7': [precipitation], 'Wind_pre_7': [wind]}
+				putout_dataf = pd.DataFrame(data=putout_data)
+				result = round(putout_model.predict(putout_dataf)[0], 2)
+				if(result < 0):
+					result = 0
+					
+				result = str(result)
+				output = "Output: " + result + " days to put out the fire"
+				
+			except Exception as e:
+				print(e)
+				output = "Invalid inputs!"
+			return render_template('fires.html', output=output)
 		else:
 			if 'image' not in request.files:
 				return render_template('fires.html', output="File not found! Please try re-uploading.")
