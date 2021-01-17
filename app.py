@@ -94,15 +94,19 @@ def earthquakes():
 			try:
 				longitude = float(request.form["longitude"])
 				latitude = float(request.form["latitude"])
+				month = int(request.form["month"])
+				day = int(request.form["day"])
+				deaths = int(request.form["deaths"])
 				
 				assert (longitude >= -90)
 				assert (longitude <= 90)
 				assert (latitude >= -180)
 				assert (latitude <= 180)
-				
-				month = int(request.form["month"])
-				day = int(request.form["day"])
-				deaths = int(request.form["deaths"])
+				assert (month >= 1)
+				assert (month <= 12)
+				assert (day >= 1)
+				assert (day <= 31)
+				assert (deaths >= 0)
 				
 				tsunami_data = {'LONGITUDE': [longitude], 'LATITUDE': [longitude], 'MONTH': [month], 'DAY': [day], 'DEATHS': [deaths]}
 				tsunami_dataf = pd.DataFrame(data=tsunami_data)
