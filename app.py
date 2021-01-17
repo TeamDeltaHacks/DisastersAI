@@ -6,6 +6,7 @@ import tensorflow as tf
 import keras
 from keras.models import load_model
 import pandas as pd
+import cv2
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -16,7 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 tsunami_model = load('tsunami_model.joblib')
 magnitude_model = load('magnitude_model.joblib')
 putout_model = load('putout_model.joblib')
-hurricane_nodel = load_model('hurricane-weights.h5')
+hurricane_model = load_model('hurricane-weights.h5')
 wildfire_model = load_model('wildfire-weights.h5')
 
 
@@ -78,9 +79,22 @@ def fires():
 				return render_template('fires.html', output="File not found! Please try re-uploading.")
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
-				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-				return render_template('fires.html', output="Output: 0")
-			return render_template('fires.html', output="An unknown error occurred!")			
+				filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+				f.save(filepath)
+				image = cv2.imread(filepath, cv2.IMREAD_COLOR)
+				image = cv2.resize(image, (300, 300))
+				image_tensor = tf.convert_to_tensor(image, dtype=tf.float32)
+				image_tensor = tf.expand_dims(image_tensor, 0)
+				result = wildfire_model.predict(image_tensor)[0][0]
+				result = result * 100
+				if(result < 0):
+					result = 0
+				if(result > 100):
+					result = 100
+				result = str(result)
+				output = "Output: " + result + "% chance of a wildfire"
+				return render_template('fires.html', output=output)
+			return render_template('fires.html', output="An unknown error occurred!")
 	else:
 		return render_template('fires.html', output="")
 
@@ -95,8 +109,21 @@ def hurricanes():
 				return render_template('hurricanes.html', output="File not found! Please try re-uploading.")
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
-				f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-				return render_template('hurricanes.html', output="Output: 0")
+				filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+				f.save(filepath)
+				image = cv2.imread(filepath, cv2.IMREAD_COLOR)
+				image = cv2.resize(image, (300, 300))
+				image_tensor = tf.convert_to_tensor(image, dtype=tf.float32)
+				image_tensor = tf.expand_dims(image_tensor, 0)
+				result = hurricane_model.predict(image_tensor)[0][0]
+				result = result * 100
+				if(result < 0):
+					result = 0
+				if(result > 100):
+					result = 100
+				result = str(result)
+				output = "Output: " + result + "% chance of a flood damage after a hurricane"
+				return render_template('hurricanes.html', output=output)
 			return render_template('hurricanes.html', output="An unknown error occurred!")
 		else:
 			return render_template('hurricanes.html', output="Coming soon!")
