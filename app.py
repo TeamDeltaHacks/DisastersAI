@@ -54,7 +54,7 @@ def fires():
 				assert (precipitation >= 0)
 				assert (wind >= 0)
 				assert (vegetation >= 1)
-				assert (vegetation <= 12)
+				assert (vegetation <= 28)
 				
 				putout_data = {'longitude': [longitude], 'latitude': [longitude], 'discovery_month': [month], 'Vegetation': [vegetation], 'Temp_pre_7': [temperature], 'Hum_pre_7': [humidity], 'Prec_pre_7': [precipitation], 'Wind_pre_7': [wind]}
 				putout_dataf = pd.DataFrame(data=putout_data)
@@ -65,7 +65,7 @@ def fires():
 				result = str(result)
 				if(result == "0"):
 					result = "0-1"
-				output = "Output: " + result + " days to put out the fire"
+				output = result + " days to put out the fire"
 				
 			except Exception as e:
 				print(e)
@@ -92,7 +92,7 @@ def fires():
 				if(result > 100):
 					result = 100
 				result = str(result)
-				output = "Output: " + result + "% chance of a wildfire"
+				output = result + "% chance of a wildfire"
 				return render_template('fires.html', output=output)
 			return render_template('fires.html', output="An unknown error occurred!")
 	else:
@@ -122,7 +122,7 @@ def hurricanes():
 				if(result > 100):
 					result = 100
 				result = str(result)
-				output = "Output: " + result + "% chance of a flood damage after a hurricane"
+				output = result + "% chance of a flood damage after a hurricane"
 				return render_template('hurricanes.html', output=output)
 			return render_template('hurricanes.html', output="An unknown error occurred!")
 		else:
@@ -151,7 +151,7 @@ def earthquakes():
 				if(result < 0):
 					result = 0
 				result = str(result)
-				output = "Output: " + result + " on the Richter scale"
+				output = result + " on the Richter scale"
 				
 			except Exception as e:
 				print(e)
@@ -184,7 +184,7 @@ def earthquakes():
 				if(result > 100):
 					result = 100
 				result = str(result)
-				output = "Output: " + result + "% chance of a tsunami"
+				output = result + "% chance of a tsunami"
 			
 			except Exception as e:
 				print(e)
