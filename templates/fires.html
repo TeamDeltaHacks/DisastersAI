@@ -134,23 +134,35 @@
                 <br/>
                 <div class="col-md-6 form-group">
                   <label for="name">Longitude</label>
-                  <input type="number" class="form-control" name="longitude" required>
+                  <input type="number" class="form-control" name="longitude" min="-90" max="90" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Latitude</label>
-                  <input type="number" class="form-control" name="latitude" required>
+                  <input type="number" class="form-control" name="latitude" min="-180" max="180" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="name">Discovery Month (1-12)</label>
-                  <input type="number" class="form-control" name="month" required>
+                  <input type="number" class="form-control" name="month" min="1" max="12" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="name">Temperature 7 Days Before (Celsius)</label>
+                  <label for="name">Temperature 7 Days Before (°C)</label>
                   <input type="number" class="form-control" name="temperature" required>
                 </div>
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
+                  <label for="name">Humidity 7 Days Before (0%-100%)</label>
+                  <input type="number" class="form-control" name="humidity" min="0" max="100" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name">Precipitation 7 Days Before (mm)</label>
+                  <input type="number" class="form-control" name="precipitation" min="0" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="name">Wind 7 Days Before (m/s)</label>
+                  <input type="number" class="form-control" name="wind" min="0" required>
+                </div>
+                <div class="col-md-6 form-group">
                   <label for="name">Vegetation Levels (1-28, Below)</label>
-                  <input type="number" class="form-control" name="vegetation" required>
+                  <input type="number" class="form-control" name="vegetation" min="1" max="28" required>
                 </div>
                 <input type="hidden" class="form-control" name="type" value="0" required>
 
@@ -201,7 +213,7 @@
             </form>
           </div>
           
-          <div class="col-md-6 mb-5 mb-md-0 aos-init aos-animate" data-aos="fade-up">
+          <div class="col-md-5 mb-5 mb-md-0 aos-init aos-animate" style="margin-left: 8%;" data-aos="fade-up">
 	        <h2>Smoke</h2>
             <p class="mb-0">Using CNNs to detect wildfire smoke</p>
             <form action="/fires" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
