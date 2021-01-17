@@ -82,7 +82,10 @@ def earthquakes():
 				
 				mag_data = {'longitude': [longitude], 'latitude': [longitude]}
 				mag_dataf = pd.DataFrame(data=mag_data)
-				result = str(round(magnitude_model.predict(mag_dataf)[0], 2))
+				result = round(magnitude_model.predict(mag_dataf)[0], 2)
+				if(result < 0):
+					result = 0
+				result = str(result)
 				output = "Output: " + result + " on the Richter scale"
 				
 			except Exception as e:
@@ -110,7 +113,12 @@ def earthquakes():
 				
 				tsunami_data = {'LONGITUDE': [longitude], 'LATITUDE': [longitude], 'MONTH': [month], 'DAY': [day], 'DEATHS': [deaths]}
 				tsunami_dataf = pd.DataFrame(data=tsunami_data)
-				result = str(tsunami_model.predict(tsunami_dataf)[0] * 100)
+				result = tsunami_model.predict(tsunami_dataf)[0] * 100
+				if(result < 0):
+					result = 0
+				if(result > 100):
+					result = 100
+				result = str(result)
 				output = "Output: " + result + "% chance of a tsunami"
 			
 			except Exception as e:
