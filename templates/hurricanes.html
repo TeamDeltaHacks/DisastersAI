@@ -128,8 +128,9 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Image</label>
-                  <input type="file" class="" name="image" required="">
+                  <input type="file" class="" name="image" onchange="loadFile(event)" accept="image/x-png,image/jpeg" required="">
                 </div>
+                <img id="output" style="width: calc(100% - 30px); height: auto; margin-left: 15px;"/>
                 <input type="hidden" class="form-control" name="type" value="0" required="">
 
                 <div class="col-md-12 mb-3">
@@ -148,6 +149,13 @@
           
     	</div>
     </section>
+    
+    <script>
+	    var loadFile = function(event) {
+			var image = document.getElementById('output');
+			image.src = URL.createObjectURL(event.target.files[0]);
+		};
+    </script>
 
   </main><!-- End #main -->
 
