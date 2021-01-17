@@ -62,6 +62,8 @@ def fires():
 					result = 0
 					
 				result = str(result)
+				if(result == "0"):
+					result = "0-1"
 				output = "Output: " + result + " days to put out the fire"
 				
 			except Exception as e:
