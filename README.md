@@ -12,5 +12,5 @@ Learn More: https://devpost.com/software/disastersai
 
 Best ML Hack & Most Creative at OrionHacks
 
-Most innovative project at STHacks
+Most Innovative Project at STHacks
 </b>
