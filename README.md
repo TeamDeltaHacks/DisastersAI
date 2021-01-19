@@ -2,16 +2,16 @@
 
 Revolutionizing Catastrophe Prediction with Machine Learning
 
-Learn More: https://devpost.com/software/disastersai
-
 <b>
-  <ul>
-  <li>Best Environmental Sustainability Hack at HTNE 2021</li>
 
-  <li>4th Overall & The People's Choice at ThetaHacks</li>
+Best Environmental Sustainability Hack at HTNE 2021
 
-  <li>Best ML Hack & Most Creative at OrionHacks</li>
+4th Overall & The People's Choice at ThetaHacks
 
-  <li>Most Innovative Project at STHacks</li>
-  </ul>
+Best ML Hack & Most Creative at OrionHacks
+
+Most Innovative Project at STHacks
+
 </b>
+
+Learn More: https://devpost.com/software/disastersai
