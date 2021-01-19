@@ -6,9 +6,10 @@ Learn More: https://devpost.com/software/disastersai
 
 <b>
 <li>Best Environmental Sustainability Hack at HTNE 2021</li>
+  
 <li>4th Overall & The People's Choice at ThetaHacks</li>
 
-- Best ML Hack & Most Creative at OrionHacks
+<li>Best ML Hack & Most Creative at OrionHacks</li>
 
-- Most Innovative Project at STHacks
+<li>Most Innovative Project at STHacks</li>
 </b>
