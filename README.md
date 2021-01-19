@@ -11,4 +11,6 @@ Learn More: https://devpost.com/software/disastersai
 4th Overall & The People's Choice at ThetaHacks
 
 Best ML Hack & Most Creative at OrionHacks
+
+Most innovative project at STHacks
 </b>
